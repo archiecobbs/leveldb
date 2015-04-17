@@ -8,13 +8,13 @@
         <version>28</version>
     </parent>
 
-    <groupId>org.iq80.leveldb</groupId>
+    <groupId>org.dellroad</groupId>
     <artifactId>leveldb-project</artifactId>
     <version>0.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <description>Port of LevelDB to Java</description>
-    <url>http://github.com/dain/leveldb</url>
+    <url>http://github.com/archiecobbs/leveldb</url>
 
     <modules>
         <module>leveldb-api</module>
@@ -48,9 +48,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/dain/leveldb.git</connection>
-        <developerConnection>scm:git:git@github.com:dain/leveldb.git</developerConnection>
-        <url>http://github.com/dain/leveldb/tree/master</url>
+        <connection>scm:git:git://github.com/archiecobbs/leveldb.git</connection>
+        <developerConnection>scm:git:git@github.com:archiecobbs/leveldb.git</developerConnection>
+        <url>http://github.com/archiecobbs/tree/master</url>
     </scm>
 
     <properties>
