@@ -20,7 +20,7 @@
 
     <parent>
         <artifactId>leveldb-project</artifactId>
-        <groupId>org.iq80.leveldb</groupId>
+        <groupId>org.dellroad</groupId>
         <version>0.8.1</version>
     </parent>
 
@@ -34,12 +34,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.iq80.leveldb</groupId>
+            <groupId>org.dellroad</groupId>
             <artifactId>leveldb-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.iq80.leveldb</groupId>
+            <groupId>org.dellroad</groupId>
             <artifactId>leveldb</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
