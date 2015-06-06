@@ -1,5 +1,7 @@
 
-Note: forked from the original [here](https://github.com/dain/leveldb)
+Note: forked from the original [here](https://github.com/dain/leveldb).
+
+Now [available in Maven Central](http://search.maven.org/#search|ga|1|g%3A%22org.dellroad%22%20AND%20%28a%3A%22leveldb%22%20OR%20a%3A%22leveldb-api%22%29).
 
 # LevelDB in Java
 
