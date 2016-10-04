@@ -174,6 +174,7 @@ public abstract class TableTest
 
         long approximateOffset = table.getApproximateOffsetOf(endKey);
         assertTrue(approximateOffset >= lastApproximateOffset);
+
     }
 
     @BeforeMethod

@@ -173,6 +173,7 @@ public final class BlockHelper
 
             previousKey = entry.getKey();
             restartBlockCount++;
+
         }
         return size;
     }

@@ -68,6 +68,7 @@ public class Version
             builder.add(new Level(i, files, getTableCache(), getInternalKeyComparator()));
         }
         this.levels = builder.build();
+
     }
 
     public void assertNoOverlappingFiles()

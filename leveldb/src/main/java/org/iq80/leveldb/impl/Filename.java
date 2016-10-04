@@ -177,21 +177,6 @@ public final class Filename
         }
         return ok;
     }
-    
-    private static void writeStringToFileSync(String str, File file) throws IOException
-    {
-        FileOutputStream stream = new FileOutputStream(file);
-        try
-        {
-           stream.write(str.getBytes(Charsets.UTF_8));
-           stream.flush();
-           stream.getFD().sync();
-        }
-        finally
-        {
-           stream.close();
-        }
-    }
 
     private static void writeStringToFileSync(String str, File file)
             throws IOException

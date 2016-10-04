@@ -42,7 +42,7 @@ public class MemTable
 
     public MemTable(InternalKeyComparator internalKeyComparator)
     {
-        table = new ConcurrentSkipListMap<InternalKey, Slice>(internalKeyComparator);
+        table = new ConcurrentSkipListMap<>(internalKeyComparator);
     }
 
     public boolean isEmpty()

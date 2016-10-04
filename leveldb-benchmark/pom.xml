@@ -36,12 +36,10 @@
         <dependency>
             <groupId>org.dellroad</groupId>
             <artifactId>leveldb-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.dellroad</groupId>
             <artifactId>leveldb</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

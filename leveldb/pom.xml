@@ -21,7 +21,6 @@
         <dependency>
             <groupId>org.dellroad</groupId>
             <artifactId>leveldb-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>

@@ -262,6 +262,7 @@ public class DbImplTest
         assertEquals(db.get("a"), "va");
         assertEquals(db.get("f"), "vf");
         assertEquals(db.get("x"), "vx");
+
     }
 
     @Test
@@ -338,6 +339,7 @@ public class DbImplTest
         assertEquals(db.get("foo"), "v4");
         assertEquals(db.get("bar"), "v2");
         assertEquals(db.get("baz"), "v5");
+
     }
 
     @Test
@@ -371,6 +373,7 @@ public class DbImplTest
         assertEquals(db.get("bar"), "v2");
         assertEquals(db.get("big1"), longString(10000000, 'x'));
         assertEquals(db.get("big2"), longString(1000, 'y'));
+
     }
 
     @Test
@@ -400,6 +403,7 @@ public class DbImplTest
         for (int i = 0; i < n; i++) {
             assertEquals(db.get(key(i)), key(i) + longString(1000, 'v'));
         }
+
     }
 
     @Test
@@ -989,6 +993,7 @@ public class DbImplTest
             chars[i] = (char) ((int) ' ' + random.nextInt(95));
         }
         return new String(chars);
+
     }
 
     private static String longString(int length, char character)
@@ -1176,6 +1181,7 @@ public class DbImplTest
             for (int level = 0; level < maxLevelWithFiles; level++) {
                 db.compactRange(level, Slices.copiedBuffer("", UTF_8), Slices.copiedBuffer("~", UTF_8));
             }
+
         }
 
         public int numberOfFilesInLevel(int level)
@@ -1231,6 +1237,7 @@ public class DbImplTest
             }
             return result.build();
         }
+
     }
 
     private static class StringDbIterator
