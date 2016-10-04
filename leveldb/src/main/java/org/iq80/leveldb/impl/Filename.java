@@ -193,6 +193,16 @@ public final class Filename
         }
     }
 
+    private static void writeStringToFileSync(String str, File file)
+            throws IOException
+    {
+        try (FileOutputStream stream = new FileOutputStream(file)) {
+            stream.write(str.getBytes(Charsets.UTF_8));
+            stream.flush();
+            stream.getFD().sync();
+        }
+    }
+
     public static List<File> listFiles(File dir)
     {
         File[] files = dir.listFiles();

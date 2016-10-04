@@ -10,7 +10,7 @@
 
     <groupId>org.dellroad</groupId>
     <artifactId>leveldb-project</artifactId>
-    <version>0.8.2-SNAPSHOT</version>
+    <version>0.9</version>
     <packaging>pom</packaging>
 
     <description>Port of LevelDB to Java</description>

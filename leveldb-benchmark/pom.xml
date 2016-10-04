@@ -21,7 +21,7 @@
     <parent>
         <artifactId>leveldb-project</artifactId>
         <groupId>org.dellroad</groupId>
-        <version>0.8.2-SNAPSHOT</version>
+        <version>0.9</version>
     </parent>
 
     <artifactId>leveldb-benchmark</artifactId>
