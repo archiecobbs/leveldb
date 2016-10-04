@@ -27,7 +27,8 @@ import org.iq80.leveldb.util.Slice;
 import java.util.Comparator;
 import java.util.Map.Entry;
 
-import static org.iq80.leveldb.impl.SnapshotSeekingIterator.Direction.*;
+import static org.iq80.leveldb.impl.SnapshotSeekingIterator.Direction.FORWARD;
+import static org.iq80.leveldb.impl.SnapshotSeekingIterator.Direction.REVERSE;
 
 public final class SnapshotSeekingIterator
         extends AbstractReverseSeekingIterator<Slice, Slice>

@@ -100,7 +100,6 @@ public class MemTable
             InternalIterator,
             ReverseSeekingIterator<InternalKey, Slice>
     {
-
         private ReversePeekingIterator<Entry<InternalKey, Slice>> iterator;
         private final List<Entry<InternalKey, Slice>> entryList;
 

@@ -31,7 +31,10 @@ public class ReversePeekingIteratorTest
 {
     public void testNextPrevPeekPeekPrev()
     {
-        Integer a = 0, b = 1, c = 2, d = 3;
+        Integer a = 0;
+        Integer b = 1;
+        Integer c = 2;
+        Integer d = 3;
         ReversePeekingIterator<Integer> iter = ReverseIterators.reversePeekingIterator(Arrays.asList(a, b, c, d));
 
         assertTrue(iter.hasNext());
@@ -69,5 +72,3 @@ public class ReversePeekingIteratorTest
         assertTrue(iter.hasPrev());
     }
 }
-
-

@@ -32,28 +32,32 @@ public abstract class AbstractReverseSeekingIterator<K, V>
     @Override
     public final void seekToFirst()
     {
-        rPeekedElement = peekedElement = null;
+        peekedElement = null;
+        rPeekedElement = null;
         seekToFirstInternal();
     }
 
     @Override
     public void seekToLast()
     {
-        rPeekedElement = peekedElement = null;
+        peekedElement = null;
+        rPeekedElement = null;
         seekToLastInternal();
     }
 
     @Override
     public final void seek(K targetKey)
     {
-        rPeekedElement = peekedElement = null;
+        peekedElement = null;
+        rPeekedElement = null;
         seekInternal(targetKey);
     }
 
     @Override
     public final void seekToEnd()
     {
-        rPeekedElement = peekedElement = null;
+        peekedElement = null;
+        rPeekedElement = null;
         seekToEndInternal();
     }
 

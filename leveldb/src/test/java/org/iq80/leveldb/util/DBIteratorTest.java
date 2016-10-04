@@ -18,7 +18,6 @@
 
 package org.iq80.leveldb.util;
 
-import org.fusesource.leveldbjni.JniDBFactory;
 import org.iq80.leveldb.DB;
 import org.iq80.leveldb.Options;
 import org.iq80.leveldb.ReadOptions;
@@ -35,7 +34,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -65,13 +63,14 @@ import com.google.common.collect.Ordering;
 import static com.google.common.base.Charsets.UTF_8;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 public class DBIteratorTest
 {
-    private static final List<Entry<String, String>> entries, ordered, rOrdered;
+    private static final List<Entry<String, String>> entries;
+    private static final List<Entry<String, String>> ordered;
+    private static final List<Entry<String, String>> rOrdered;
     private final Options options = new Options().createIfMissing(true);
     private DB db;
     private File tempDir;
@@ -367,7 +366,9 @@ public class DBIteratorTest
             throws ExecutionException, InterruptedException, IOException
     {
         List<List<Entry<String, String>>> splitList = Lists.partition(entries, entries.size() / 2);
-        List<Entry<String, String>> firstHalf = splitList.get(0), secondHalf = splitList.get(1);
+        List<Entry<String, String>> firstHalf = splitList.get(0);
+        List<Entry<String, String>> secondHalf = splitList.get(1);
+
         putAll(db, firstHalf);
         // TODO: use actual snapshots once snapshot preservation through compaction is supported
         //Snapshot snapshot = db.getSnapshot();
@@ -379,8 +380,8 @@ public class DBIteratorTest
         // put in another set of data
         putAll(db, secondHalf);
 
-        List<Entry<String, String>> forward = ordered(firstHalf), backward =
-                reverseOrdered(firstHalf);
+        List<Entry<String, String>> forward = ordered(firstHalf);
+        List<Entry<String, String>> backward = reverseOrdered(firstHalf);
 
         //ReadOptions snapshotRead = new ReadOptions().snapshot(snapshot);
         // snapshot should retain the entries of the first insertion batch
@@ -441,9 +442,9 @@ public class DBIteratorTest
         put(db, "e", "2");
         put(db, "f", "2");
 
-        String[] _expected = {"a1", "b0", "e1", "g1"};
+        String[] expected0 = {"a1", "b0", "e1", "g1"};
         List<Entry<String, String>> expected = new ArrayList<>();
-        for (String s : _expected) {
+        for (String s : expected0) {
             expected.add(Maps.immutableEntry("" + s.charAt(0), "" + s.charAt(1)));
         }
         List<Entry<String, String>> reverseExpected = reverseOrdered(expected);
@@ -462,7 +463,6 @@ public class DBIteratorTest
     @Test
     public void testMixedIteration()
     {
-
         putAll(db, entries);
 
         ReversePeekingIterator<Entry<String, String>> expected =
@@ -488,7 +488,8 @@ public class DBIteratorTest
         // take mixed forward and backward steps up the list then down the list (favoring forward to
         // reach the end, then backward)
         int pos = 0;
-        int randForward = 12, randBack = 4;// [-4, 7] inclusive, initially favor forward steps
+        int randForward = 12;           // [-4, 7] inclusive, initially favor forward steps
+        int randBack = 4;               // [-4, 7] inclusive, initially favor forward steps
         int steps = randForward + 1;
         do {
             int direction = steps < 0 ? -1 : 1; // mathematical sign for addition
@@ -520,7 +521,7 @@ public class DBIteratorTest
                 // [-7, 4] inclusive
             }
             while ((steps = rand.nextInt(randForward) - randBack) == 0) {
-                ;
+                // do nothing
             }
         }
         while (pos > 0);
@@ -529,8 +530,8 @@ public class DBIteratorTest
     @Test
     public void testSeekPastContentsWithDeletesAndReverse()
     {
-        String keys[] = {"a", "b", "c", "d", "e", "f"};
-        int deleteIndex[] = {2, 3, 5};
+        String[] keys = {"a", "b", "c", "d", "e", "f"};
+        int[] deleteIndex = {2, 3, 5};
 
         List<Entry<String, String>> keyvals = new ArrayList<Entry<String, String>>();
         for (String key : keys) {
@@ -615,7 +616,7 @@ public class DBIteratorTest
         return db.write(batch, writeOptions);
     }
 
-    private final static WriteOptions writeOptions = new WriteOptions().snapshot(true);
+    private static final WriteOptions writeOptions = new WriteOptions().snapshot(true);
 
     private static void put(DB db, String key, String val)
     {

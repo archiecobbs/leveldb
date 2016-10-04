@@ -27,5 +27,3 @@ public interface ReverseIterator<T>
 
     boolean hasPrev();
 }
-
-

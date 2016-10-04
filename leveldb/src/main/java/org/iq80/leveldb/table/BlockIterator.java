@@ -21,7 +21,6 @@ package org.iq80.leveldb.table;
 import com.google.common.base.Preconditions;
 
 import org.iq80.leveldb.impl.ReverseSeekingIterator;
-import org.iq80.leveldb.util.SliceInput;
 import org.iq80.leveldb.util.Slice;
 import org.iq80.leveldb.util.SliceInput;
 import org.iq80.leveldb.util.SliceOutput;
@@ -330,7 +329,8 @@ public class BlockIterator
     private static class CacheEntry
     {
         public final BlockEntry entry;
-        public final int prevPosition, dataPosition;
+        public final int prevPosition;
+        public final int dataPosition;
 
         public CacheEntry(BlockEntry entry, int prevPosition, int dataPosition)
         {

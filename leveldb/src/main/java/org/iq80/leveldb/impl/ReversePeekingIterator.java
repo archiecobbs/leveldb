@@ -25,5 +25,3 @@ public interface ReversePeekingIterator<T>
 {
     T peekPrev();
 }
-
-

@@ -27,7 +27,9 @@ import java.util.Map.Entry;
 
 import org.iq80.leveldb.util.TableIterator.CurrentOrigin;
 
-import static org.iq80.leveldb.util.TableIterator.CurrentOrigin.*;
+import static org.iq80.leveldb.util.TableIterator.CurrentOrigin.NEXT;
+import static org.iq80.leveldb.util.TableIterator.CurrentOrigin.NONE;
+import static org.iq80.leveldb.util.TableIterator.CurrentOrigin.PREV;
 
 public final class LevelIterator
         extends AbstractReverseSeekingIterator<InternalKey, Slice>

@@ -32,6 +32,9 @@ import static com.google.common.base.Preconditions.checkState;
 
 public final class ReverseIterators
 {
+    private ReverseIterators()
+    {
+    }
 
     // reimplements several methods and classes from com.google.common.collect.Iterators
     // in addition to further reversing functionality and convenience methods

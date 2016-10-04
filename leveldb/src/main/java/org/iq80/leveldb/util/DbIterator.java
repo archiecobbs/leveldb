@@ -33,9 +33,9 @@ public final class DbIterator
         implements
         InternalIterator
 {
-
     private final OrdinalIterator[] heap;
-    private final Comparator<OrdinalIterator> smallerNext, largerPrev;
+    private final Comparator<OrdinalIterator> smallerNext;
+    private final Comparator<OrdinalIterator> largerPrev;
 
     private final Comparator<InternalKey> userComparator;
 
@@ -197,7 +197,8 @@ public final class DbIterator
             int right = child + 1;
             if (right < queue.length &&
                     comparator.compare(c, queue[right]) > 0) {
-                c = queue[child = right];
+                child = right;
+                c = queue[child];
             }
             if (comparator.compare(x, c) <= 0) {
                 break;
@@ -235,8 +236,8 @@ public final class DbIterator
 
     private class OrdinalIterator
     {
-        final public ReverseSeekingIterator<InternalKey, Slice> iterator;
-        final public int ordinal;
+        public final ReverseSeekingIterator<InternalKey, Slice> iterator;
+        public final int ordinal;
 
         public OrdinalIterator(int ordinal, ReverseSeekingIterator<InternalKey, Slice> iterator)
         {
@@ -292,8 +293,8 @@ public final class DbIterator
 
     private static class Tuple<T1, T2>
     {
-        final public T1 item1;
-        final public T2 item2;
+        public final T1 item1;
+        public final T2 item2;
 
         public Tuple(T1 item1, T2 item2)
         {
